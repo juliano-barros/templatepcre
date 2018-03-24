@@ -32,7 +32,7 @@ echo "aqui 4";
 $template->render('temp/'.$fileName);
 echo "aqui 5";
 
-//unlink( 'temp/' . $fileName . '.tmpl');
+unlink( 'temp/' . $fileName . '.tmpl');
 
 ?>
 

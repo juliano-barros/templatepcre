@@ -3,5 +3,8 @@
     "psr-4": {
       "Template\\": "src/"
     }
+  },
+  "require": {
+    "php": ">=7.0"
   }
 }
