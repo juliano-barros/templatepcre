@@ -78,8 +78,8 @@ class Template
         // Cheking @last inside of foreachs
         $this->compileLast();
         // Eval of content
-        echo $this->getContent();
-        eval( '?>' . $this->getContent() . '<?php' );
+        echo '?>' . $this->getContent() ;
+        eval( '?>' . $this->getContent() );
     }
 
     /**
