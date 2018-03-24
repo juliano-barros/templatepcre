@@ -25,9 +25,7 @@ $template = new Template(['Name' => $name, 'Stuff'=> $stuff]);
 //$template->addVariable('Stuff', $Stuff);
 // If your views are in a different path you can set your base path views
 //$template->setPath( 'src/views/');
-echo file_exists($fileName. '.tmpl');
 $template->render($fileName);
-
 
 unlink( $fileName . '.tmpl');
 
