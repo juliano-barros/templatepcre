@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Content here -->
+        <h1>
+            Template engine
+        </h1>
+        <h2>
+            Example
+        </h2>
+        Import a file with this these variables
+        <ul class="list-group">
+            <li class="list-group-item">
+                <pre>
+                    Name = "Your name goes here"
+                </pre>
+            </li>
+            <li class="list-group-item">
+                <pre>
+                    Stuff = [ [ "Thing" => "roses", "Desc"  => "red" ],
+                              [ "Thing" => "violets", "Desc"  => "blue"  ],
+                              [ "Thing" => "you",  "Desc"  => "able to see this" ],
+                              [ "Thing" => "we", "Desc"  => "showing this for you" ] ]
+                </pre>
+            </li>
+        </ul>
+
+        <pre>
+            Hey {{Name}}, here's a slightly better formatted poem for you:&lt;br&gt;
+            &lt;br&gt;
+            {{#each Stuff}}
+              {{Thing}} are {{Desc}}{{#unless @last }},{{else}}!{{/unless}}&lt;br&gt;
+            {{/each}}
+        </pre>
+
+        <form id="formLoad">
+
+            <div class="form-group">
+                <label for="formFile">Example file input to be intrepreted</label>
+                <input type="file" class="form-control-file" id="formFile">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+            <pre>
+                <div id="textFormatted">
+
+                </div>
+            </pre>
+
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</body>
+
+    <script type="text/javascript">
+
+        $('#formLoad').submit(function(event){
+            event.preventDefault();
+
+            data = new FormData();
+            data.append( 'file', $( '#formFile' )[0].files[0] );
+            data.append( "teste", 'o que vai aqui' );
+
+            $.ajax({
+                type: 'POST',
+                url: 'index.php',
+                processData: false,
+                data: data,
+                contentType: false,
+                success: function(data){
+                    $("#textFormatted").text( data.replace(/<br>/g, '',).replace(/<\?php/g, '') );
+                }
+            });
+         });
+
+    </script>
+
+</html>
