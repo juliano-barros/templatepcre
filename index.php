@@ -27,6 +27,8 @@ $template = new Template(['Name' => $name, 'Stuff'=> $stuff]);
 //$template->setPath( 'src/views/');
 $template->render($fileName);
 
+echo file_exists($fileName. '.tmpl');
+
 unlink( $fileName . '.tmpl');
 
 ?>
