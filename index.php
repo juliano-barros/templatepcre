@@ -2,7 +2,7 @@
 
 use Template\Template;
 
-require_once 'vendor/autoload.php';
+require_once './vendor/autoload.php';
 
 $name  = "Your name goes here";
 $stuff = [ [ "Thing" => "roses", "Desc"  => "red" ],
